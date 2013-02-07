@@ -58,8 +58,8 @@ class DynamicInlinesModelAdmin(ModelAdmin):
     # Django 1.4:
     # Inlines are created per request
 
-    def get_inline_instances(self, request):
-        inlines = super(DynamicInlinesModelAdmin, self).get_inline_instances(request)
+    def get_inline_instances(self, request, *args, **kwargs):
+        inlines = super(DynamicInlinesModelAdmin, self).get_inline_instances(request, *args, **kwargs)
         if self.extra_inlines_first:
             return self._get_extra_inline_instances() + inlines
         else:
